@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Events\NewEvent;
+use App\Events\MessageSent;
 
 /*
 |--------------------------------------------------------------------------
@@ -23,3 +24,13 @@ Route::get('/event', function () {
 
     return 'Message sent!';
 });
+
+Route::get('/ws', function () {
+    return view('test');
+});
+
+Route::get('/send-message', function () {
+    MessageSent::dispatch(request()->message);
+    return view('test');
+});
+
